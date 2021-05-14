@@ -174,7 +174,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/myBlog/2021/05/14/jdk/" class="post-title-link" itemprop="url">未命名</a>
+            <a href="/myBlog/2021/05/14/jdk/" class="post-title-link" itemprop="url">JDK</a>
         </h2>
 
         <div class="post-meta">
@@ -183,8 +183,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-05-14 12:01:06" itemprop="dateCreated datePublished" datetime="2021-05-14T12:01:06+08:00">2021-05-14</time>
+              <time title="创建时间：2021-05-14 16:31:24 / 修改时间：16:38:33" itemprop="dateCreated datePublished" datetime="2021-05-14T16:31:24+08:00">2021-05-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/myBlog/categories/JDK/" itemprop="url" rel="index"><span itemprop="name">JDK</span></a>
+                </span>
             </span>
 
           
@@ -231,7 +241,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/myBlog/2021/05/14/effective%20java/" class="post-title-link" itemprop="url">未命名</a>
+            <a href="/myBlog/2021/05/14/effective%20java/" class="post-title-link" itemprop="url">Effective Java</a>
         </h2>
 
         <div class="post-meta">
@@ -240,8 +250,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-05-14 12:01:06" itemprop="dateCreated datePublished" datetime="2021-05-14T12:01:06+08:00">2021-05-14</time>
+              <time title="创建时间：2021-05-14 16:31:24 / 修改时间：16:38:33" itemprop="dateCreated datePublished" datetime="2021-05-14T16:31:24+08:00">2021-05-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/myBlog/categories/Java%E7%BC%96%E7%A0%81%E4%B9%A6%E7%B1%8D/" itemprop="url" rel="index"><span itemprop="name">Java编码书籍</span></a>
+                </span>
             </span>
 
           
@@ -269,33 +289,14 @@
 <li><p>方法返回的对象所属的类，在编写包含该静态工厂方法的类时可以不存在</p>
 </li>
 </ol>
-<p><strong>缺点：</strong></p>
-<ol>
-<li><p>类如果不含公有的或者受保护的构造器，就不能被子类化</p>
-</li>
-<li><p>程序员很难发现它们</p>
-<h5 id="2、遇到多个构造器参数时要考虑使用构建器"><a href="#2、遇到多个构造器参数时要考虑使用构建器" class="headerlink" title="2、遇到多个构造器参数时要考虑使用构建器"></a>2、遇到多个构造器参数时要考虑使用构建器</h5><h5 id="3、用私有构造器或者枚举类型强化-Singleton-属性"><a href="#3、用私有构造器或者枚举类型强化-Singleton-属性" class="headerlink" title="3、用私有构造器或者枚举类型强化_Singleton_属性"></a>3、用私有构造器或者枚举类型强化_Singleton_属性</h5><h5 id="4、通过私有构造器强化不可实例化的能力"><a href="#4、通过私有构造器强化不可实例化的能力" class="headerlink" title="4、通过私有构造器强化不可实例化的能力"></a>4、通过私有构造器强化不可实例化的能力</h5><h5 id="5、优先考虑依赖注入来引用资源"><a href="#5、优先考虑依赖注入来引用资源" class="headerlink" title="5、优先考虑依赖注入来引用资源"></a>5、优先考虑依赖注入来引用资源</h5><h5 id="6、避免创建不必要的对象"><a href="#6、避免创建不必要的对象" class="headerlink" title="6、避免创建不必要的对象"></a>6、避免创建不必要的对象</h5></li>
-<li><p>优先使用基本类型而不是装箱基本类型</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">sum</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Long sum = <span class="number">0L</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= Integer.MAX_VALUE; i++)&#123;</span><br><span class="line">		sum += i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="7、消除过期的对象引用"><a href="#7、消除过期的对象引用" class="headerlink" title="7、消除过期的对象引用"></a>7、消除过期的对象引用</h5><h5 id="8、避免使用终结方法和清除方法"><a href="#8、避免使用终结方法和清除方法" class="headerlink" title="8、避免使用终结方法和清除方法"></a>8、避免使用终结方法和清除方法</h5></li>
-</ol>
-<p><strong>缺点：</strong></p>
-<ol>
-<li>不能保证会被及时执行</li>
-<li>会造成严重性能损失</li>
-<li>严重的安全问题<h5 id="9、try-with-resources-优先-try-finally"><a href="#9、try-with-resources-优先-try-finally" class="headerlink" title="9、try-with-resources 优先 try-finally"></a>9、try-with-resources 优先 try-finally</h5></li>
-</ol>
-<p>在处理必须关闭的资源时，始终要优先考虑用 try-with-resources ，而不是 try-finally 这样得到的代码将更加简洁、清晰，产生的异常也更有价值 有了 try-with-resources 语句，在使用必须关闭的资源时，就能更轻松地正确编写代码了 实践证明， 这个用 try-finally 是不可能做到的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//try-with-resources</span></span><br><span class="line"><span class="keyword">try</span>(BufferedReader reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(<span class="string">&quot;/test&quot;</span>)))&#123;</span><br><span class="line">    reader.readLine();</span><br><span class="line">&#125;<span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//try-finally</span></span><br><span class="line">BufferedReader reader = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(<span class="string">&quot;/test&quot;</span>));</span><br><span class="line">    reader.readLine();</span><br><span class="line">&#125;<span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        reader.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="二、对于所有对象都通用的方法"><a href="#二、对于所有对象都通用的方法" class="headerlink" title="二、对于所有对象都通用的方法"></a>二、对于所有对象都通用的方法</h4><h5 id="1、覆盖-equals-时请遵守通用约定"><a href="#1、覆盖-equals-时请遵守通用约定" class="headerlink" title="1、覆盖 equals 时请遵守通用约定"></a>1、覆盖 equals 时请遵守通用约定</h5><h5 id="2、覆盖-equals-时总要覆盖-hash-Code"><a href="#2、覆盖-equals-时总要覆盖-hash-Code" class="headerlink" title="2、覆盖 equals 时总要覆盖 hash Code"></a>2、覆盖 equals 时总要覆盖 hash Code</h5><p><strong>Object规范：</strong> </p>
-<ol>
-<li>在应用程序的执行期间，只要对象的 equals 方法的比较操作所用到的信息没有被 修改，那么对同一个对象的多次调用， hashCode 方法都必须始终返回同一个值 在一个应用程序与另一个程序的执行过程中，执行 hashCode 方法所返回的值可以 不一致</li>
-<li>如果两个对象根据 equals(Object)方法比较是相等的，那么调用这两个对象中的 hashCode 方法都必须产生同样的整数结果</li>
-<li>如果两个对象根据 equals(Object)方法比较是不相等的，那么调用这两个对象 中的 hashCode 方法，则不一定要求 hashCode 方法必须产生不同的结果 但是程 序员应该知道，给不相等的对象产生截然不同的整数结果，有可能提高散列表(hash table) 的性能</li>
-</ol>
-<h5 id="3、始终要覆盖-toString"><a href="#3、始终要覆盖-toString" class="headerlink" title="3、始终要覆盖 toString"></a>3、始终要覆盖 toString</h5><p>虽然 Object 提供了 toString 方法的 个实现，但它返回的字符串通常并不是类 的用户所期望看到的 它包含类的名称，以及 个“＠”符号，接着是散列码的无符号 十六进制表示法，例如 PhoneNumber@163b91 toString 的通用约定指出，被返回 的字符串应该是一个“简洁的但信息丰富，并且易于阅读的表达形式” 尽管有人认为 PhoneNumber@163b91 算得上是简洁和易于阅读了，但是与 707-867-5309 比较起来，它还算不上是信息丰富的 toString 约定进一步指出，“建议所有的子类都覆盖这个方法 这是一个很好的建议</p>
-<h5 id="4、谨慎的覆盖-clone"><a href="#4、谨慎的覆盖-clone" class="headerlink" title="4、谨慎的覆盖 clone"></a>4、谨慎的覆盖 clone</h5><h5 id="5、考虑实现-Comparable-接口"><a href="#5、考虑实现-Comparable-接口" class="headerlink" title="5、考虑实现 Comparable 接口"></a>5、考虑实现 Comparable 接口</h5><h4 id="三、类和接口"><a href="#三、类和接口" class="headerlink" title="三、类和接口"></a>三、类和接口</h4><h5 id="1、使类和成员的可访问性最小化"><a href="#1、使类和成员的可访问性最小化" class="headerlink" title="1、使类和成员的可访问性最小化"></a>1、使类和成员的可访问性最小化</h5><h5 id="2、要在公有类而非公有域中使用访问方法"><a href="#2、要在公有类而非公有域中使用访问方法" class="headerlink" title="2、要在公有类而非公有域中使用访问方法"></a>2、要在公有类而非公有域中使用访问方法</h5><h5 id="3、使可变性最小化"><a href="#3、使可变性最小化" class="headerlink" title="3、使可变性最小化"></a>3、使可变性最小化</h5><h5 id="4、复合优先于继承"><a href="#4、复合优先于继承" class="headerlink" title="4、复合优先于继承"></a>4、复合优先于继承</h5><h5 id="5、要么设计继承并提供文档说明，-要么禁止继承"><a href="#5、要么设计继承并提供文档说明，-要么禁止继承" class="headerlink" title="5、要么设计继承并提供文档说明， 要么禁止继承"></a>5、要么设计继承并提供文档说明， 要么禁止继承</h5><h5 id="6、接口优于抽象类"><a href="#6、接口优于抽象类" class="headerlink" title="6、接口优于抽象类"></a>6、接口优于抽象类</h5><h5 id="7、为后代设计接口"><a href="#7、为后代设计接口" class="headerlink" title="7、为后代设计接口"></a>7、为后代设计接口</h5><h5 id="8、接口只用于定义类型"><a href="#8、接口只用于定义类型" class="headerlink" title="8、接口只用于定义类型"></a>8、接口只用于定义类型</h5><h5 id="9、类层次优于标签类"><a href="#9、类层次优于标签类" class="headerlink" title="9、类层次优于标签类"></a>9、类层次优于标签类</h5><h5 id="10、静态成员类优于非静态成员类"><a href="#10、静态成员类优于非静态成员类" class="headerlink" title="10、静态成员类优于非静态成员类"></a>10、静态成员类优于非静态成员类</h5><h5 id="11、限制源文件为单个顶级类"><a href="#11、限制源文件为单个顶级类" class="headerlink" title="11、限制源文件为单个顶级类"></a>11、限制源文件为单个顶级类</h5>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/myBlog/2021/05/14/effective%20java/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -703,13 +704,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/myBlog/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/myBlog/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
