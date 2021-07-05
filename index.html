@@ -160,6 +160,104 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/05/thread-book/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/myBlog/images/head.jpg">
+      <meta itemprop="name" content="kun">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Just go go">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/myBlog/2021/07/05/thread-book/" class="post-title-link" itemprop="url">Java并发编程之美</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-05 14:14:27" itemprop="dateCreated datePublished" datetime="2021-07-05T14:14:27+08:00">2021-07-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-06 00:00:06" itemprop="dateModified" datetime="2021-07-06T00:00:06+08:00">2021-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/myBlog/categories/Java%E7%BC%96%E7%A0%81%E4%B9%A6%E7%B1%8D/" itemprop="url" rel="index"><span itemprop="name">Java编码书籍</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Java并发编程之美"><a href="#Java并发编程之美" class="headerlink" title="Java并发编程之美"></a>Java并发编程之美</h3><h4 id="一、并发编程线程基础"><a href="#一、并发编程线程基础" class="headerlink" title="一、并发编程线程基础"></a>一、并发编程线程基础</h4><h5 id="1-1-什么是线程"><a href="#1-1-什么是线程" class="headerlink" title="1.1 什么是线程"></a>1.1 什么是线程</h5><p>线程是进程中的一个实体，线程本身是不会独立存在的。进程是代码在数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，线程则是进程的一个执行路劲，一个进程至少有一个线程，进程中的多个线程共享进程的资源。</p>
+<p>操作系统分配资源时是吧资源分配给进程，但 CPU 是吧资源分配给线程，因此占用 CPU 的是线程，所以线程是 CPU 分配的基本单位。CPU 一般使用时间片轮转的方式让线程轮询占有，所以当前线程时间片用完之后，需要让出 CPU，等待下次轮到自己时在执行</p>
+<p>计数器如果执行的时本地方法，则记录的地址时 undefined，只有执行的时 java 代码时，才是下一条指令的地址</p>
+<h5 id="1-2-线程的创建与运行"><a href="#1-2-线程的创建与运行" class="headerlink" title="1.2 线程的创建与运行"></a>1.2 线程的创建与运行</h5><p>继承 Thread 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTask</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;I am a child thread&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> ThreadTask().start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现 Runnable 接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RunnableTask</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;I am a child thread&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        RunnableTask task = <span class="keyword">new</span> RunnableTask();</span><br><span class="line">        <span class="keyword">new</span> Thread(task).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(task).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现 Callable 接口，FutureTask 方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallerTask</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//异步线程</span></span><br><span class="line">        FutureTask&lt;String&gt; task = <span class="keyword">new</span> FutureTask&lt;String&gt;(<span class="keyword">new</span> CallerTask());</span><br><span class="line">        <span class="comment">//启动线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(task).start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String s = task.get();</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Thread 方式：</strong>在 run() 方法中直接使用 this 可获得当前线程，但 java 不支持多继承，如果继承了 Thread 类，就不能继承其他类了，其次任务和代码没有分离，当多个线程执行一样的任务就会需要多份任务代码。</p>
+<p><strong>Runnable 方式：</strong>任务与代码分离，多个线程可以共用同一份任务，并且可以继承其他类</p>
+<p><strong>Callable 方式：</strong>可以有任务的返回值</p>
+<h5 id="1-3-线程通知与等待"><a href="#1-3-线程通知与等待" class="headerlink" title="1.3 线程通知与等待"></a>1.3 线程通知与等待</h5><p>线程调用共享变量的 wait() 方法时，该线程会被阻塞挂起，直到发生以下事情才返回：（1）其他线程调用的共享变量的 notify() 或则 notifyAll() 方法；（2）其他线程调用了该线程的 interrupt() 方法吗，该线程抛出 InterruptedException 异常返回</p>
+<p>如果调用 wait() 方法时，没有事先获取该对象的监视器锁，会抛出 IllegalMonitorStateException 异常</p>
+<h5 id="1-9-死锁"><a href="#1-9-死锁" class="headerlink" title="1.9 死锁"></a>1.9 死锁</h5><p>死锁产生条件：</p>
+<ul>
+<li>互斥条件： 指线程对己经获取到的资源进行排它性使用，即该资源同时只由一个线程占用。如果此时还有其他线程请求获取该资源，则请求者只能等待，直至占有资源的线程释放该资源。</li>
+<li>请求并持有条件：指一 线程己经持有了至少一个资源，但又提出了新的资源请求 而新资源己被其他线程占有，所以当前线程会被阻塞，但阻塞的同时并不释放自己经获取的资源。</li>
+<li>不可剥夺条件 指线程获取到的资源在自己使用完之前不能被其他线程抢占，只有在自己使用完毕后才由自己释放该资源。</li>
+<li>环路等待条件：指在发生死锁时，必然存在一个线程→资源的环形链，即线程集合 {TO , TL T2 ，…， Tn ｝中 TO 正在等待一个Tl 占用的资源，Tl 正在等待 T2 占用的资源，……Tn 在等待己被 TO 占用资源。</li>
+</ul>
+<h5 id="1-10-守护线程和用户线程"><a href="#1-10-守护线程和用户线程" class="headerlink" title="1.10 守护线程和用户线程"></a>1.10 守护线程和用户线程</h5><h5 id="1-11-ThreadLocal"><a href="#1-11-ThreadLocal" class="headerlink" title="1.11 ThreadLocal"></a>1.11 ThreadLocal</h5><h5 id="1-12-InheritableThreadLocal"><a href="#1-12-InheritableThreadLocal" class="headerlink" title="1.12 InheritableThreadLocal"></a>1.12 InheritableThreadLocal</h5><p>可以继承父线程的ThreadLocalMap</p>
+<h4 id="二、并发编程的其他基础知识"><a href="#二、并发编程的其他基础知识" class="headerlink" title="二、并发编程的其他基础知识"></a>二、并发编程的其他基础知识</h4><h5 id="2-1-什么是多线程并发编程"><a href="#2-1-什么是多线程并发编程" class="headerlink" title="2.1 什么是多线程并发编程"></a>2.1 什么是多线程并发编程</h5>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/02/thread-practice/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -571,10 +669,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-05-14 16:31:24 / 修改时间：16:38:33" itemprop="dateCreated datePublished" datetime="2021-05-14T16:31:24+08:00">2021-05-14</time>
+              <time title="创建时间：2021-05-14 16:31:24" itemprop="dateCreated datePublished" datetime="2021-05-14T16:31:24+08:00">2021-05-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-06 00:00:06" itemprop="dateModified" datetime="2021-07-06T00:00:06+08:00">2021-07-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -596,7 +700,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h3 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h3><p>参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/czwbig/p/11127124.html">https://www.cnblogs.com/czwbig/p/11127124.html</a></p>
+
       
     </div>
 
@@ -866,87 +971,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/07/git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/myBlog/images/head.jpg">
-      <meta itemprop="name" content="kun">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Just go go">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/myBlog/2021/05/07/git/" class="post-title-link" itemprop="url">GIT</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-07 16:12:47" itemprop="dateCreated datePublished" datetime="2021-05-07T16:12:47+08:00">2021-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-08 00:00:09" itemprop="dateModified" datetime="2021-05-08T00:00:09+08:00">2021-05-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/myBlog/categories/GIT/" itemprop="url" rel="index"><span itemprop="name">GIT</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。<br>Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。官网参考<a target="_blank" rel="noopener" href="https://git-scm.com/">https://git-scm.com/</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/myBlog/2021/05/07/git/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1018,7 +1042,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/myBlog/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1031,7 +1055,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/myBlog/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
